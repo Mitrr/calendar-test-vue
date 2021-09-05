@@ -1,0 +1,65 @@
+@color-grey-light: #c8c8c8;
+
+.date-picker {
+  background-color: #ffffff;
+  color: #6b686c;
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.25);
+  width: fit-content;
+  border-radius: .25rem;
+  padding-top: .75rem;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 1rem;
+
+    .arrow {
+      cursor: pointer;
+      transition: .15s ease-out;
+      &-left {
+        transform: rotate(180deg);
+      }
+      &:hover {
+        opacity: .5;
+        transition: .25s ease-in;
+      }
+    }
+    .selected-date {
+      font-size: 1.375rem;
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    row-gap: 1px;
+  }
+
+  &-day-cell,
+  &-date-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 3rem;
+    &.cell-muted {
+      background-color: #fcf9fc;
+      color: @color-grey-light;
+    }
+    .caption {
+      position: absolute;
+      top: .25rem;
+      font-size: .5rem;
+      text-transform: uppercase;
+    }
+  }
+  &-day-cell {
+    color: @color-grey-light;
+    font-size: .85rem;
+    text-transform: uppercase;
+    height: 1.5rem;
+    border-bottom: 1px solid @color-grey-light;
+  }
+}
