@@ -29,15 +29,15 @@
 
             <div
                     class="date-picker-date-cell text-small"
-                    v-for="(date, i) of currentMonthDates"
+                    v-for="({date, dateNumber}, i) of currentMonthDates"
                     :key="`date-${i}`"
                     :class="{'cell-muted': !isCurrentMonthDate(date)}"
             >
-                <div v-if="date.getDate() === 1" class="caption">
+                <div v-if="dateNumber === 1" class="caption">
                     {{ getCaption(date) }}
                 </div>
                 <div>
-                    {{ date.getDate() }}
+                    {{ dateNumber }}
                 </div>
             </div>
         </div>
@@ -117,7 +117,10 @@
                 let dates = [...new Array(this.daysInMonth)].map(
                     (v, i) => new Date(this.year, this.month, i + 1)
                 );
-                return [ ...this.prevMonthDates, ...dates, ...this.nextMonthDates ];
+                return [ ...this.prevMonthDates, ...dates, ...this.nextMonthDates ].map( date => ({
+                    date: date,
+                    dateNumber: date.getDate()
+                }))
             },
             prevMonthDates() {
                 const dayNumber = this.firstDayOfMonth;
