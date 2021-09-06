@@ -69,7 +69,7 @@
                         'November',
                         'December',
                     ];
-                },
+                }
             },
             dayNames: {
                 type: Array,
